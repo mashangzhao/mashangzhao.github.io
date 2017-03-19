@@ -149,7 +149,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/Mysql/" style="font-size: 10px;">Mysql</a> <a href="/tags/Sublime-Text3/" style="font-size: 10px;">Sublime Text3</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a>
+                        <a href="/tags/Mysql/" style="font-size: 10px;">Mysql</a> <a href="/tags/Sublime-Text3/" style="font-size: 10px;">Sublime Text3</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/script/" style="font-size: 10px;">script</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a>
                     </div>
                 </section>
                 
@@ -235,11 +235,111 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-hpc-tips" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/03/19/hpc-tips/" class="article-date">
+      <time datetime="2017-03-19T22:53:17.000Z" itemprop="datePublished">2017-03-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/19/hpc-tips/">hpc-tips</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="hpc-中用到的几个脚本"><a href="#hpc-中用到的几个脚本" class="headerlink" title="hpc 中用到的几个脚本"></a>hpc 中用到的几个脚本</h1><p>最近遇到了这么一件事···</p>
+<h2 id="想要复制N份qbs脚本"><a href="#想要复制N份qbs脚本" class="headerlink" title="想要复制N份qbs脚本"></a>想要复制N份qbs脚本</h2><p><code>N = 10</code></p>
+<pre><code>$ example for copy conten
+#!/bin/bash
+echo &quot;start&quot;
+for i in {1..10}
+do
+cat &gt; script.$i.pbs &lt;&lt;EOF
+#!/bin/bash
+#PBS -N test
+#PBS -l nodes=1:ppn=1
+#PBS -q AP100_queue
+#PBS -j oe
+cd  \$PBS_O_WORKDIR
+proc=\$(cat \$PBS_NODEFILE | wc -l)
+./test_work_1.o &gt;&gt; qwer.log
+EOF
+done
+echo &quot;end&quot;
+</code></pre><p>被复制的内容是</p>
+<pre><code>#!/bin/bash
+#PBS -N test
+#PBS -l nodes=1:ppn=1
+#PBS -q AP100_queue
+#PBS -j oe
+cd  \$PBS_O_WORKDIR
+proc=\$(cat \$PBS_NODEFILE | wc -l)
+./test_work_1.o &gt;&gt; qwer.log
+</code></pre><ul>
+<li>shell脚本的 <code>#!/bin/bash</code> 不可缺少</li>
+<li>待复制的里面有 <code>$</code>符号，一定注意，要将 <code>\</code> 加在其前。具体参见shell编程  <code>=_=</code></li>
+</ul>
+<h2 id="执行N份qbs脚本"><a href="#执行N份qbs脚本" class="headerlink" title="执行N份qbs脚本"></a>执行N份qbs脚本</h2><ul>
+<li><p>脚本名称为<code>script.1.pbs</code>等等</p>
+<pre><code>for i in {1..10}; do qsub script.$i.pbs ;done
+</code></pre></li>
+</ul>
+<p><em>图片仅供参考，具体以实物为准</em></p>
+<p><img src="https://github.com/mashangzhao/blogSourceRepo/tree/master/source/_posts/hpc_0.PNG" alt="图片一"></p>
+<p><img src="https://github.com/mashangzhao/blogSourceRepo/tree/master/source/_posts/hpc_1.PNG" alt="图片二"></p>
+<p><strong>参考文档1</strong> <a href="https://wikis.nyu.edu/display/NYUHPC/Tutorial+-+Submitting+a+job+using+qsub" target="_blank" rel="external">Tutorial - Submitting a job using qsub</a></p>
+<p><strong>待更</strong> </p>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/script/">script</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/03/18/hello-world/" class="article-date">
-      <time datetime="2017-03-18T04:26:49.778Z" itemprop="datePublished">2017-03-18</time>
+      <a href="/2017/03/19/hello-world/" class="article-date">
+      <time datetime="2017-03-19T15:45:07.272Z" itemprop="datePublished">2017-03-19</time>
 </a>
     </div>
   
