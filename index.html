@@ -149,7 +149,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/Mysql/" style="font-size: 10px;">Mysql</a> <a href="/tags/Sublime-Text3/" style="font-size: 10px;">Sublime Text3</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/script/" style="font-size: 10px;">script</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a>
+                        <a href="/tags/Mysql/" style="font-size: 10px;">Mysql</a> <a href="/tags/Sublime-Text3/" style="font-size: 10px;">Sublime Text3</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/postgres/" style="font-size: 10px;">postgres</a> <a href="/tags/script/" style="font-size: 10px;">script</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a>
                     </div>
                 </section>
                 
@@ -234,6 +234,99 @@
     </div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-postgres-export-and-import-md" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/06/12/postgres-export-and-import-md/" class="article-date">
+      <time datetime="2017-06-12T17:28:35.000Z" itemprop="datePublished">2017-06-12</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/12/postgres-export-and-import-md/">postgres export and import.md</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="Postgres数据库的导入和导出"><a href="#Postgres数据库的导入和导出" class="headerlink" title="Postgres数据库的导入和导出"></a>Postgres数据库的导入和导出</h2><hr>
+<h3 id="导出（Export）"><a href="#导出（Export）" class="headerlink" title="导出（Export）"></a>导出（Export）</h3><p>1.连接数据库</p>
+<blockquote>
+<p>这里使用了Git Client…，其实只要有个远程客户端都可以</p>
+</blockquote>
+<p><strong>语法如下</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">psql -U postgres -h 127.0.0.1 -p 5432 [-d databasename -W] <span class="comment">-- 可以在此指定数据库</span></div><div class="line">\c attendance		<span class="comment">-- 或者连接之后再指定数据库</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：如果上面指定了-W参数，会强制在连接每一个database时，输入密码，可以先不用</p>
+</blockquote>
+<p><strong>操作如下</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">$ psql -U postgres -h 127.0.0.1 -p 5432</div><div class="line">psql (9.5.6)</div><div class="line">postgres=# \l</div><div class="line">                                                         数据库列表</div><div class="line">    名称    |  拥有者  | 字元编码 |            校对规则            |             Ctype              |       存取权限</div><div class="line">------------+----------+----------+--------------------------------+--------------------------------+-----------------------</div><div class="line"> attendance | postgres | UTF8     | Chinese (Simplified)_China.936 | Chinese (Simplified)_China.936 |</div><div class="line"> postgres   | postgres | UTF8     | Chinese (Simplified)_China.936 | Chinese (Simplified)_China.936 |</div><div class="line"> template0  | postgres | UTF8     | Chinese (Simplified)_China.936 | Chinese (Simplified)_China.936 | =c/postgres          +</div><div class="line">            |          |          |                                |                                | postgres=CTc/postgres</div><div class="line"> template1  | postgres | UTF8     | Chinese (Simplified)_China.936 | Chinese (Simplified)_China.936 | =c/postgres          +</div><div class="line">            |          |          |                                |                                | postgres=CTc/postgres</div><div class="line"> testim     | postgres | UTF8     | Chinese (Simplified)_China.936 | Chinese (Simplified)_China.936 |</div><div class="line">(5 行记录)</div><div class="line"></div><div class="line"></div><div class="line">postgres=# \c attendance;</div><div class="line">attendance=#</div></pre></td></tr></table></figure>
+<p>2.设置编码<br>编码不同，可能在导入导出时遇到问题。明确指定了编码，Postgres会为你转换的。<br><strong>语法如下</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">show</span> client_encoding;	<span class="comment">-- 查看使用的本地客户端的编码</span></div><div class="line"><span class="keyword">show</span> server_encoding;	<span class="comment">-- psql服务器端的编码</span></div><div class="line">\encoding UTF-8;		<span class="comment">-- 这是一种方式，还有另外一种方式是SET client_encoding语法</span></div><div class="line"><span class="keyword">RESET</span> client_encoding;	<span class="comment">-- 重置client端的编码</span></div><div class="line"><span class="keyword">SET</span> CLIENT_ENCODING <span class="keyword">TO</span> <span class="string">'UTF-8'</span>;	<span class="comment">-- 再次更改为UTF-8</span></div></pre></td></tr></table></figure>
+<hr>
+<p><strong>操作如下</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">attendance=# show client_encoding;</div><div class="line"> client_encoding</div><div class="line">-----------------</div><div class="line"> GBK</div><div class="line">(1 行记录)</div><div class="line"></div><div class="line"></div><div class="line">attendance=# show server_encoding;</div><div class="line"> server_encoding</div><div class="line">-----------------</div><div class="line"> UTF8</div><div class="line">(1 行记录)</div><div class="line"></div><div class="line"></div><div class="line">attendance=# \encoding UTF-8;</div><div class="line">attendance=# show client_encoding;</div><div class="line"> client_encoding</div><div class="line">-----------------</div><div class="line"> UTF8</div><div class="line">(1 行记录)</div><div class="line"></div><div class="line"></div><div class="line">attendance=# RESET client_encoding;</div><div class="line">RESET</div><div class="line">attendance=# show client_encoding;</div><div class="line"> client_encoding</div><div class="line">-----------------</div><div class="line"> GBK</div><div class="line">(1 行记录)</div><div class="line"></div><div class="line"></div><div class="line">attendance=# SET CLIENT_ENCODING TO 'UTF-8';</div><div class="line">SET</div><div class="line">attendance=# show client_encoding;</div><div class="line"> client_encoding</div><div class="line">-----------------</div><div class="line"> UTF8</div><div class="line">(1 行记录)</div><div class="line"></div><div class="line"></div><div class="line">attendance=#</div></pre></td></tr></table></figure>
+<p>3.正式导出</p>
+<p><strong>语法如下</strong><br>使用copy命令导出到本地文件<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">\copy student to 'd://psql/hey.csv' delimiter as '~' csv null '!';	<span class="comment">-- 使用\copy的目的是psql可以访问本地文件，否则只能访问data目录;</span></div><div class="line"></div><div class="line">\copy (<span class="keyword">select</span> * <span class="keyword">from</span> student <span class="keyword">where</span> <span class="keyword">id</span> &gt; <span class="number">50</span>) <span class="keyword">to</span> <span class="string">'d://psql/tmp.csv'</span> delimiter <span class="keyword">as</span> <span class="string">'~'</span> csv <span class="literal">null</span> <span class="string">'!'</span>	<span class="comment">-- 这个也可以，更多可能</span></div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>注意：delimiter分割建议使用’~’，\copy可以不用’;’，copy要用的。<br> csv null ‘!’很重要，</p>
+</blockquote>
+<p><strong>操作如下</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">attendance=# \copy student to 'd://psql/hey.csv' delimiter as '~' csv null '!';</div><div class="line">COPY 100</div><div class="line"></div><div class="line">attendance=# \copy (select * from student where id &gt; 50) to 'd://psql/tmp.csv' delimiter as '~' csv null '!'</div><div class="line">COPY 59</div></pre></td></tr></table></figure>
+<h3 id="导入（Import）"><a href="#导入（Import）" class="headerlink" title="导入（Import）"></a>导入（Import）</h3><p>1.设置字段之间的分隔符<br>2.注意某些为NULL的字段，可能需要特殊处理<br>3.同导出一样设置编码</p>
+<p><strong>语法如下</strong></p>
+<p><em>from-to</em> 的关系</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">delete</span> <span class="keyword">from</span> student;	<span class="comment">-- delete all data from student</span></div><div class="line"> \copy student from 'd://psql/ss1.csv' delimiter as '~' csv null '!';	<span class="comment">-- 空值用!代替，然后到postgres会有替换为NULL</span></div></pre></td></tr></table></figure>
+<p><strong>操作如下</strong><br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">attendance=# delete from student;</div><div class="line">DELETE 100</div><div class="line">attendance=# \copy student from 'd://psql/ss1.csv' delimiter as '~' csv null '!';</div><div class="line">COPY 100</div><div class="line">attendance=#</div></pre></td></tr></table></figure></p>
+<hr>
+<h4 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h4><ol>
+<li><a href="https://www.postgresql.org/docs/9.5/static/app-psql.html" target="_blank" rel="external">postgres官方连接数据库</a></li>
+<li><a href="https://www.postgresql.org/docs/9.5/static/multibyte.html" target="_blank" rel="external">postgres设置编码</a></li>
+<li><a href="https://www.postgresql.org/docs/8.2/static/dml-delete.html" target="_blank" rel="external">postgres中DELETE语法</a></li>
+</ol>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/postgres/">postgres</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-hpc-tips" class="article article-type-post" itemscope itemprop="blogPost">
   
