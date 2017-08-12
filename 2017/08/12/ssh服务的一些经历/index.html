@@ -3,24 +3,25 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Sublime Text3插件 | Blog</title>
+  <title>ssh服务的一些经历 | Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="插件安装package control 安装Sublime Text3 打开Sublime Text3，Ctrl+~ 调出控制台，输入代码安装 package control">
-<meta name="keywords" content="Sublime Text3">
+  <meta name="description" content="先了解下SSH？ SSH is a software package that enables secure system administration and file transfers over insecure networks. It is used in nearly every data center, in every larger enterprise.  我们常谈的是SSH协议">
+<meta name="keywords" content="ssh,ubuntu,sudoers">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Sublime Text3插件">
-<meta property="og:url" content="https://mashangzhao.github.io/2016/08/19/Sublime/index.html">
+<meta property="og:title" content="ssh服务的一些经历">
+<meta property="og:url" content="https://mashangzhao.github.io/2017/08/12/ssh服务的一些经历/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="插件安装package control 安装Sublime Text3 打开Sublime Text3，Ctrl+~ 调出控制台，输入代码安装 package control">
-<meta property="og:image" content="http://images2015.cnblogs.com/blog/858833/201608/858833-20160819130547140-1068639085.png">
-<meta property="og:image" content="http://images2015.cnblogs.com/blog/858833/201608/858833-20160819130330031-914926432.png">
-<meta property="og:image" content="http://images2015.cnblogs.com/blog/858833/201608/858833-20160819130343718-290834882.png">
-<meta property="og:image" content="http://images2015.cnblogs.com/blog/858833/201608/858833-20160819130349796-1458967604.png">
+<meta property="og:description" content="先了解下SSH？ SSH is a software package that enables secure system administration and file transfers over insecure networks. It is used in nearly every data center, in every larger enterprise.  我们常谈的是SSH协议">
+<meta property="og:image" content="http://on2k2dqee.bkt.clouddn.com/permitrootlogin.png">
+<meta property="og:image" content="http://on2k2dqee.bkt.clouddn.com/ssh-key-rsa.png">
+<meta property="og:image" content="http://on2k2dqee.bkt.clouddn.com/sshd_config_1.png">
+<meta property="og:image" content="http://on2k2dqee.bkt.clouddn.com/permitemptypasswords.png">
+<meta property="og:image" content="http://on2k2dqee.bkt.clouddn.com/passwordauthentication.png">
 <meta property="og:updated_time" content="2017-08-12T14:22:55.187Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Sublime Text3插件">
-<meta name="twitter:description" content="插件安装package control 安装Sublime Text3 打开Sublime Text3，Ctrl+~ 调出控制台，输入代码安装 package control">
-<meta name="twitter:image" content="http://images2015.cnblogs.com/blog/858833/201608/858833-20160819130547140-1068639085.png">
+<meta name="twitter:title" content="ssh服务的一些经历">
+<meta name="twitter:description" content="先了解下SSH？ SSH is a software package that enables secure system administration and file transfers over insecure networks. It is used in nearly every data center, in every larger enterprise.  我们常谈的是SSH协议">
+<meta name="twitter:image" content="http://on2k2dqee.bkt.clouddn.com/permitrootlogin.png">
   
     <link rel="alternative" href="/atom.xml" title="Blog" type="application/atom+xml">
   
@@ -240,11 +241,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-Sublime" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-ssh服务的一些经历" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/08/19/Sublime/" class="article-date">
-      <time datetime="2016-08-19T12:49:00.000Z" itemprop="datePublished">2016-08-19</time>
+      <a href="/2017/08/12/ssh服务的一些经历/" class="article-date">
+      <time datetime="2017-08-12T11:37:51.000Z" itemprop="datePublished">2017-08-12</time>
 </a>
     </div>
   
@@ -257,7 +258,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Sublime Text3插件
+      ssh服务的一些经历
     </h1>
   
 
@@ -268,7 +269,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sublime-Text3/">Sublime Text3</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ssh/">ssh</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sudoers/">sudoers</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ubuntu/">ubuntu</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -278,50 +279,50 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="插件安装"><a href="#插件安装" class="headerlink" title="插件安装"></a>插件安装</h1><h2 id="package-control"><a href="#package-control" class="headerlink" title="package control"></a><em>package control</em></h2><ol>
-<li>安装Sublime Text3</li>
-<li><p>打开Sublime Text3，<em>Ctrl+~</em> 调出控制台，输入代码安装 <em>package control</em></p>
-<a id="more"></a>
-<p>代码如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> urllib.request,os,hashlib; h = <span class="string">'2915d1851351e5ee549c20394736b442'</span> + <span class="string">'8bc59f460fa1548d1514676163dafc88'</span>; pf = <span class="string">'Package Control.sublime-         package'</span>; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( <span class="string">'http://packagecontrol.io/'</span> + pf.replace(<span class="string">' '</span>, <span class="string">'%20'</span>)).read(); dh = hashlib.sha256(by).hexdigest(); print(<span class="string">'Error validating download (got %s instead of %s), please try manual install'</span> % (dh, h)) <span class="keyword">if</span> dh != h <span class="keyword">else</span> open(os.path.join( ipp, pf), <span class="string">'wb'</span> ).write(by)</div></pre></td></tr></table></figure>
-</li>
-<li><p>等待安装，关闭后重新打开，OK！</p>
-</li>
-</ol>
+        <h2 id="先了解下SSH？"><a href="#先了解下SSH？" class="headerlink" title="先了解下SSH？"></a>先了解下SSH？</h2><blockquote>
+<p>SSH is a software package that enables secure system administration and file transfers over insecure networks. It is used in nearly every data center, in every larger enterprise.</p>
+</blockquote>
+<p>我们常谈的是SSH协议，例如使用口令远程登陆服务器，为了在不安全的网络环境下进行一些操作。</p>
+<h2 id="没有SSH远程登录配置？"><a href="#没有SSH远程登录配置？" class="headerlink" title="没有SSH远程登录配置？"></a>没有SSH远程登录配置？</h2><p>今天看了aliyun的一篇文档，从无到有完成了一个<br><a id="more"></a></p>
+<ul>
+<li>禁止root登陆</li>
+<li>使用口令登陆</li>
+<li>禁止密码登录</li>
+<li>禁止22端口，修改其他端口</li>
+</ul>
+<p>当然了，中间也遇到了问题，参考了其他文档。<br>工具说明：</p>
+<ul>
+<li>xshell(或者putty)，用来连接远程服务器</li>
+<li>puttygen(或者gitbash或者linux bash)，用来生成口令</li>
+</ul>
+<p>也可以使用其他工具，能完成即可。</p>
 <hr>
-<p><img src="http://images2015.cnblogs.com/blog/858833/201608/858833-20160819130547140-1068639085.png" alt=""></p>
-<h2 id="几个插件"><a href="#几个插件" class="headerlink" title="几个插件"></a>几个插件</h2><p>安装步骤：<br>Preference-package control-install package-输入插件名称搜索</p>
 <ul>
-<li><p>Markdown Editing </p>
-</li>
-<li><p>Markdown Preview</p>
-<blockquote>
-<p> .md文件编写和在本地浏览器预览</p>
-</blockquote>
-<p>以上两个配置：</p>
-<ol>
-<li><p>Preference-package setting-Markdown Priview-setting user<br><img src="http://images2015.cnblogs.com/blog/858833/201608/858833-20160819130330031-914926432.png" alt=""></p>
-</li>
-<li><p>添加代码，用来本地浏览器预览<br><img src="http://images2015.cnblogs.com/blog/858833/201608/858833-20160819130343718-290834882.png" alt=""></p>
-</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&quot;browser&quot; : &quot;D:/chrome/Google/Chrome/Application/chrome.exe&quot;</div><div class="line">// &quot;浏览markdown的浏览器的路径&quot;</div></pre></td></tr></table></figure>
-<ol>
-<li>Preference -Key Bindings user，添加代码，快捷键f7预览<br><img src="http://images2015.cnblogs.com/blog/858833/201608/858833-20160819130349796-1458967604.png" alt=""></li>
-</ol>
-</li>
+<li>禁止root登陆<br>禁止root登陆很简单，但是前提是你需要有其他的user。<br>话不多说，看过程。<strong>root权限操作的。</strong></li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123; &quot;keys&quot;: [&quot;f7&quot;], &quot;command&quot;: &quot;markdown_preview&quot;, &quot;args&quot;: &#123;&quot;target&quot;: &quot;browser&quot;, &quot;parser&quot;:&quot;markdown&quot;&#125; &#125;,</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">root@iZ28si2aplqZ:/home# adduser test		#加一个user，登录名是test</div><div class="line">Enter new UNIX password: 					#密码</div><div class="line">Retype new UNIX password: 					#重复密码</div><div class="line"></div><div class="line"># 忘记了几秒之前输入的密码了？</div><div class="line">root@iZ28si2aplqZ:/home# passwd test		#更改test用户的密码</div><div class="line">Enter new UNIX password: </div><div class="line">Retype new UNIX password: </div><div class="line"></div><div class="line"># 注意：先使用test账户登录</div><div class="line">如果登录成功，现在有了2个连接；</div><div class="line"></div><div class="line"># 修改sshd_config文件，不允许root用户登录，并保存</div><div class="line">找到 </div><div class="line">PermitRootLogin no						#修改为no，即不允许使用root账户登录</div><div class="line"></div><div class="line"># 重启ssh服务</div><div class="line">root@iZ28si2aplqZ:/home# /etc/init.d/ssh restart</div><div class="line">[ ok ] Restarting ssh (via systemctl): ssh.service.</div><div class="line"></div><div class="line"># 尝试root登陆，发现无法登陆，这时候完成了第一步：禁止root登陆。</div></pre></td></tr></table></figure>
+<p><img src="http://on2k2dqee.bkt.clouddn.com/permitrootlogin.png" alt="禁止root登陆"></p>
 <ul>
-<li><p>BracketHighlighter</p>
-<blockquote>
-<p>  成对匹配增强，并修改括号等的颜色</p>
-</blockquote>
+<li>使用口令登陆<br>当然需要生成一对口令，公钥和私钥，然后公钥(.pub)需要放在远程一个合适的位置。<br>我也相信你有很多方案将公钥传输过去。<br>话不多说，看过程。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">mashangzhao@iZ28si2aplqZ:~$ ssh-keygen -t rsa	#生成一对rsa口令</div><div class="line">Generating public/private rsa key pair.</div><div class="line">Enter file in which to save the key (/home/mashangzhao/.ssh/id_rsa): aliyun	#文件名</div><div class="line">Enter passphrase (empty for no passphrase): 	#口令短语</div><div class="line">Enter same passphrase again:</div><div class="line">Your identification has been saved in aliyun.</div><div class="line">Your public key has been saved in aliyun.pub.</div><div class="line"></div><div class="line"># 这时生成好了一对口令</div><div class="line"># 公钥(.pub)保存在服务器这边，私钥拿回来，放在本地。</div><div class="line"></div><div class="line"># 配置部分</div><div class="line">#1 用户家目录（一般这里）新建.ssh文件夹，/home/user/.ssh/，将aliyun.pub内容复制到authorized_keys中，</div><div class="line">mashangzhao@iZ28si2aplqZ:~$ cat aliyun.pub &gt;&gt; .ssh/authorized_keys</div><div class="line"></div><div class="line">#2 配置/etc/ssh/sshd_config文件（有彩色的截图）</div><div class="line"></div><div class="line">#3 修改权限</div><div class="line">mashangzhao@iZ28si2aplqZ:/home/mashangzhao# chmod 700 .ssh		#修改.ssh目录权限</div><div class="line">mashangzhao@iZ28si2aplqZ:/home/mashangzhao# chmod 400 .ssh/authorized_keys	#修改authorized_keys权限</div><div class="line"></div><div class="line">#4 重启ssh服务</div><div class="line">/etc/init.d/ssh restart</div><div class="line"></div><div class="line">#5 测试是否可以使用口令登陆？</div><div class="line">如果可以，可以进行下一步，禁止密码登陆。</div></pre></td></tr></table></figure>
+<p><img src="http://on2k2dqee.bkt.clouddn.com/ssh-key-rsa.png" alt="生成一个密钥"><br><img src="http://on2k2dqee.bkt.clouddn.com/sshd_config_1.png" alt="sshd_config"><br><img src="http://on2k2dqee.bkt.clouddn.com/permitemptypasswords.png" alt="不允许空的密码"><br><img src="http://on2k2dqee.bkt.clouddn.com/passwordauthentication.png" alt="密码认证先开启"></p>
+<ul>
+<li>禁止密码登录</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">这一步的目的很明确，禁止使用账户的密码来连接服务器。但是，注意：前提是已经使用口令可以连接。</div><div class="line"></div><div class="line">#1 修改sshd_config文件中的</div><div class="line">PasswordAuthentication no			#yes -&gt; no最终改为no即可</div><div class="line">#2 重启ssh服务</div><div class="line">/etc/init.d/ssh restart</div><div class="line"></div><div class="line">#3 测试还能用密码登陆吗？</div><div class="line">答案是：当然不能。那就对了。</div></pre></td></tr></table></figure>
+<ul>
+<li>禁止22端口，修改为其他端口</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#1 绕开常用的22号端口，改为其他端口；</div><div class="line">修改sshd_config文件，</div><div class="line">Port xxxx			#xxxx为其他端口</div></pre></td></tr></table></figure>
+<ul>
+<li>小说明<ul>
+<li>xshell的远程传输文件还是很给力，当然前提是服务器安装sz和rz. apt-get install lrzsz<br>相比较之前的putty+winscp 还是很愉快</li>
+<li>sudo apt-get install lrzse<br>发现没有权限，解决方案是加入sudoers</li>
+</ul>
 </li>
 </ul>
-<h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><ul>
-<li><a href="https://packagecontrol.io/installation#st3" target="_blank" rel="external">官方指南</a></li>
-</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">whereid sudoers</div><div class="line">sudo root</div><div class="line">chmod u+w /etc/sudoers</div><div class="line">vi /etc/sudoers</div><div class="line"># 在root用户的下一行添加上想给sudo权限的用户名即可</div><div class="line">root	ALL=(ALL:ALL) ALL</div><div class="line">mashangzhao	ALL=(ALL:ALL) ALL</div></pre></td></tr></table></figure>
 
       
       
@@ -331,13 +332,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/08/19/Sublime/">Sublime Text3插件</a></p>
+        <p><span>本文标题:</span><a href="/2017/08/12/ssh服务的一些经历/">ssh服务的一些经历</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Shangzhao Ma 的个人博客">Shangzhao Ma</a></p>
-        <p><span>发布时间:</span>2016年08月19日 - 12时49分</p>
+        <p><span>发布时间:</span>2017年08月12日 - 11时37分</p>
         <p><span>最后更新:</span>2017年08月12日 - 14时22分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/08/19/Sublime/" title="Sublime Text3插件">https://mashangzhao.github.io/2016/08/19/Sublime/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://mashangzhao.github.io/2016/08/19/Sublime/　　作者: Shangzhao Ma" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/08/12/ssh服务的一些经历/" title="ssh服务的一些经历">https://mashangzhao.github.io/2017/08/12/ssh服务的一些经历/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://mashangzhao.github.io/2017/08/12/ssh服务的一些经历/　　作者: Shangzhao Ma" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -350,18 +351,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2016/10/19/Mysql上手/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          Mysql上手
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/03/27/配置hexo-yilia主题/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">关于配置hexo-yilia主题的若干个简单问题</div>
+    <a href="/2017/06/12/postgres-export-and-import-md/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">postgres export and import.md</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -372,7 +364,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#插件安装"><span class="toc-number">1.</span> <span class="toc-text">插件安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#package-control"><span class="toc-number">1.1.</span> <span class="toc-text">package control</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#几个插件"><span class="toc-number">1.2.</span> <span class="toc-text">几个插件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#参考资料"><span class="toc-number">1.2.0.1.</span> <span class="toc-text">参考资料</span></a></li></ol></li></ol></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#先了解下SSH？"><span class="toc-number">1.</span> <span class="toc-text">先了解下SSH？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#没有SSH远程登录配置？"><span class="toc-number">2.</span> <span class="toc-text">没有SSH远程登录配置？</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -429,13 +421,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/10/19/Mysql上手/" title="上一篇: Mysql上手">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2016/03/27/配置hexo-yilia主题/" title="下一篇: 关于配置hexo-yilia主题的若干个简单问题">
+            <a href="/2017/06/12/postgres-export-and-import-md/" title="下一篇: postgres export and import.md">
                 <i class="fa fa-angle-right"></i>
             </a>
         
