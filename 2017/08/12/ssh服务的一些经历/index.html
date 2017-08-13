@@ -17,7 +17,7 @@
 <meta property="og:image" content="http://on2k2dqee.bkt.clouddn.com/sshd_config_1.png">
 <meta property="og:image" content="http://on2k2dqee.bkt.clouddn.com/permitemptypasswords.png">
 <meta property="og:image" content="http://on2k2dqee.bkt.clouddn.com/passwordauthentication.png">
-<meta property="og:updated_time" content="2017-08-12T14:22:55.187Z">
+<meta property="og:updated_time" content="2017-08-13T07:02:20.911Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ssh服务的一些经历">
 <meta name="twitter:description" content="先了解下SSH？ SSH is a software package that enables secure system administration and file transfers over insecure networks. It is used in nearly every data center, in every larger enterprise.  我们常谈的是SSH协议">
@@ -148,8 +148,6 @@
                             
                                 <a class="fl linkedin" target="_blank" href="#" title="linkedin">linkedin</a>
                             
-                                <a class="fl rss" target="_blank" href="/atom.xml" title="rss">rss</a>
-                            
                         </ul>
                     </nav>
                 </section>
@@ -234,8 +232,6 @@
                     
                         <a class="linkedin" target="_blank" href="#" title="linkedin">linkedin</a>
                     
-                        <a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
-                    
                 </div>
             </nav>
         </header>                
@@ -314,7 +310,7 @@
 <ul>
 <li>禁止22端口，修改为其他端口</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#1 绕开常用的22号端口，改为其他端口；</div><div class="line">修改sshd_config文件，</div><div class="line">Port xxxx			#xxxx为其他端口</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#1 绕开常用的22号端口，改为其他端口；</div><div class="line">修改sshd_config文件，</div><div class="line">Port xxxx			#xxxx为其他端口</div><div class="line"></div><div class="line">#2 重启服务尝试</div></pre></td></tr></table></figure>
 <ul>
 <li>小说明<ul>
 <li>xshell的远程传输文件还是很给力，当然前提是服务器安装sz和rz. apt-get install lrzsz<br>相比较之前的putty+winscp 还是很愉快</li>
@@ -335,7 +331,7 @@
         <p><span>本文标题:</span><a href="/2017/08/12/ssh服务的一些经历/">ssh服务的一些经历</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Shangzhao Ma 的个人博客">Shangzhao Ma</a></p>
         <p><span>发布时间:</span>2017年08月12日 - 11时37分</p>
-        <p><span>最后更新:</span>2017年08月12日 - 14时22分</p>
+        <p><span>最后更新:</span>2017年08月13日 - 07时02分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/08/12/ssh服务的一些经历/" title="ssh服务的一些经历">https://mashangzhao.github.io/2017/08/12/ssh服务的一些经历/</a>
             <span class="copy-path" data-clipboard-text="原文: https://mashangzhao.github.io/2017/08/12/ssh服务的一些经历/　　作者: Shangzhao Ma" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -410,11 +406,20 @@
 
 
     
-        <section class="youyan" id="comments">
-  <div id="uyan_frame"></div>
-  <script src="http://v2.uyan.cc/code/uyan.js?uid=2133562"></script>
-</section>
-
+        <div id="gitments"></div>
+<script src="/js/gitment.browser.js"></script>
+<script>
+    var gitment = new Gitment({
+      id: window.location.pathname,
+      owner: 'mashangzhao',
+      repo: 'mashangzhao.github.io',
+      oauth: {
+        client_id: '5a6a47fc5bc677395b0f',
+        client_secret: '2bc8e168617cab76fe9ddbbc9d5daaa5df4c8f24',
+      },
+    })
+    gitment.render('gitments')
+</script>
     
 
 
@@ -470,7 +475,7 @@
             <div class="visit">
                 
                     <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" >悟空到访数: 
+                        <span id="site-visit" >海贼到访数: 
                             <span id="busuanzi_value_site_uv"></span>
                         </span>
                     </span>

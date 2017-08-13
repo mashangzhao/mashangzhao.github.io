@@ -14,7 +14,7 @@
 <meta property="og:description" content="最近遇到了这么一件事··· 想要复制N份qbs脚本N = 10 $ example for copy conten #!/bin/bash echo &amp;quot;start&amp;quot; for i in {1..10} do cat &amp;gt; script.$i.pbs &amp;lt;&amp;lt;EOF #!/bin/bash #PBS -N test #PBS -l nodes=1:ppn=1 #PBS">
 <meta property="og:image" content="http://on2k2dqee.bkt.clouddn.com/hpc_0.PNG">
 <meta property="og:image" content="http://on2k2dqee.bkt.clouddn.com/hpc_1.PNG">
-<meta property="og:updated_time" content="2017-08-12T14:22:55.187Z">
+<meta property="og:updated_time" content="2017-08-13T07:02:20.911Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hpc-tips">
 <meta name="twitter:description" content="最近遇到了这么一件事··· 想要复制N份qbs脚本N = 10 $ example for copy conten #!/bin/bash echo &amp;quot;start&amp;quot; for i in {1..10} do cat &amp;gt; script.$i.pbs &amp;lt;&amp;lt;EOF #!/bin/bash #PBS -N test #PBS -l nodes=1:ppn=1 #PBS">
@@ -145,8 +145,6 @@
                             
                                 <a class="fl linkedin" target="_blank" href="#" title="linkedin">linkedin</a>
                             
-                                <a class="fl rss" target="_blank" href="/atom.xml" title="rss">rss</a>
-                            
                         </ul>
                     </nav>
                 </section>
@@ -230,8 +228,6 @@
                         <a class="twitter" target="_blank" href="#" title="twitter">twitter</a>
                     
                         <a class="linkedin" target="_blank" href="#" title="linkedin">linkedin</a>
-                    
-                        <a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
                     
                 </div>
             </nav>
@@ -330,7 +326,7 @@ proc=\$(cat \$PBS_NODEFILE | wc -l)
         <p><span>本文标题:</span><a href="/2017/03/19/hpc-tips/">hpc-tips</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Shangzhao Ma 的个人博客">Shangzhao Ma</a></p>
         <p><span>发布时间:</span>2017年03月19日 - 22时53分</p>
-        <p><span>最后更新:</span>2017年08月12日 - 14时22分</p>
+        <p><span>最后更新:</span>2017年08月13日 - 07时02分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/03/19/hpc-tips/" title="hpc-tips">https://mashangzhao.github.io/2017/03/19/hpc-tips/</a>
             <span class="copy-path" data-clipboard-text="原文: https://mashangzhao.github.io/2017/03/19/hpc-tips/　　作者: Shangzhao Ma" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -414,11 +410,20 @@ proc=\$(cat \$PBS_NODEFILE | wc -l)
 
 
     
-        <section class="youyan" id="comments">
-  <div id="uyan_frame"></div>
-  <script src="http://v2.uyan.cc/code/uyan.js?uid=2133562"></script>
-</section>
-
+        <div id="gitments"></div>
+<script src="/js/gitment.browser.js"></script>
+<script>
+    var gitment = new Gitment({
+      id: window.location.pathname,
+      owner: 'mashangzhao',
+      repo: 'mashangzhao.github.io',
+      oauth: {
+        client_id: '5a6a47fc5bc677395b0f',
+        client_secret: '2bc8e168617cab76fe9ddbbc9d5daaa5df4c8f24',
+      },
+    })
+    gitment.render('gitments')
+</script>
     
 
 
@@ -476,7 +481,7 @@ proc=\$(cat \$PBS_NODEFILE | wc -l)
             <div class="visit">
                 
                     <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" >悟空到访数: 
+                        <span id="site-visit" >海贼到访数: 
                             <span id="busuanzi_value_site_uv"></span>
                         </span>
                     </span>

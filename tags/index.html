@@ -9,7 +9,7 @@
 <meta property="og:title" content="tags">
 <meta property="og:url" content="https://mashangzhao.github.io/tags/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:updated_time" content="2017-08-12T14:22:55.187Z">
+<meta property="og:updated_time" content="2017-08-13T07:02:20.911Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tags">
   
@@ -138,8 +138,6 @@
                             
                                 <a class="fl linkedin" target="_blank" href="#" title="linkedin">linkedin</a>
                             
-                                <a class="fl rss" target="_blank" href="/atom.xml" title="rss">rss</a>
-                            
                         </ul>
                     </nav>
                 </section>
@@ -223,8 +221,6 @@
                         <a class="twitter" target="_blank" href="#" title="twitter">twitter</a>
                     
                         <a class="linkedin" target="_blank" href="#" title="linkedin">linkedin</a>
-                    
-                        <a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
                     
                 </div>
             </nav>
@@ -398,11 +394,20 @@
 
 
     
-        <section class="youyan" id="comments">
-  <div id="uyan_frame"></div>
-  <script src="http://v2.uyan.cc/code/uyan.js?uid=2133562"></script>
-</section>
-
+        <div id="gitments"></div>
+<script src="/js/gitment.browser.js"></script>
+<script>
+    var gitment = new Gitment({
+      id: window.location.pathname,
+      owner: 'mashangzhao',
+      repo: 'mashangzhao.github.io',
+      oauth: {
+        client_id: '5a6a47fc5bc677395b0f',
+        client_secret: '2bc8e168617cab76fe9ddbbc9d5daaa5df4c8f24',
+      },
+    })
+    gitment.render('gitments')
+</script>
     
 
 
@@ -427,7 +432,7 @@
             <div class="visit">
                 
                     <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" >悟空到访数: 
+                        <span id="site-visit" >海贼到访数: 
                             <span id="busuanzi_value_site_uv"></span>
                         </span>
                     </span>

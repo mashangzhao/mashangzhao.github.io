@@ -12,7 +12,7 @@
 <meta property="og:url" content="https://mashangzhao.github.io/2016/10/19/Mysql上手/index.html">
 <meta property="og:site_name" content="Blog">
 <meta property="og:description" content="Mysql上手操作 使用Mysql,打开 相应的服务。启动…… 打开命令窗口。此处有多种方法，我是在开始菜单（Mysql5.6 Command Line Client）打开的（简单）。 1mysql -h localhost -u root -p   #开始菜单不需要此命令  登陆,使用安装时设置的密码。">
-<meta property="og:updated_time" content="2017-08-12T14:22:55.187Z">
+<meta property="og:updated_time" content="2017-08-13T07:02:20.896Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mysql上手">
 <meta name="twitter:description" content="Mysql上手操作 使用Mysql,打开 相应的服务。启动…… 打开命令窗口。此处有多种方法，我是在开始菜单（Mysql5.6 Command Line Client）打开的（简单）。 1mysql -h localhost -u root -p   #开始菜单不需要此命令  登陆,使用安装时设置的密码。">
@@ -142,8 +142,6 @@
                             
                                 <a class="fl linkedin" target="_blank" href="#" title="linkedin">linkedin</a>
                             
-                                <a class="fl rss" target="_blank" href="/atom.xml" title="rss">rss</a>
-                            
                         </ul>
                     </nav>
                 </section>
@@ -227,8 +225,6 @@
                         <a class="twitter" target="_blank" href="#" title="twitter">twitter</a>
                     
                         <a class="linkedin" target="_blank" href="#" title="linkedin">linkedin</a>
-                    
-                        <a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
                     
                 </div>
             </nav>
@@ -358,7 +354,7 @@
         <p><span>本文标题:</span><a href="/2016/10/19/Mysql上手/">Mysql上手</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Shangzhao Ma 的个人博客">Shangzhao Ma</a></p>
         <p><span>发布时间:</span>2016年10月19日 - 12时13分</p>
-        <p><span>最后更新:</span>2017年08月12日 - 14时22分</p>
+        <p><span>最后更新:</span>2017年08月13日 - 07时02分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/10/19/Mysql上手/" title="Mysql上手">https://mashangzhao.github.io/2016/10/19/Mysql上手/</a>
             <span class="copy-path" data-clipboard-text="原文: https://mashangzhao.github.io/2016/10/19/Mysql上手/　　作者: Shangzhao Ma" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -442,11 +438,20 @@
 
 
     
-        <section class="youyan" id="comments">
-  <div id="uyan_frame"></div>
-  <script src="http://v2.uyan.cc/code/uyan.js?uid=2133562"></script>
-</section>
-
+        <div id="gitments"></div>
+<script src="/js/gitment.browser.js"></script>
+<script>
+    var gitment = new Gitment({
+      id: window.location.pathname,
+      owner: 'mashangzhao',
+      repo: 'mashangzhao.github.io',
+      oauth: {
+        client_id: '5a6a47fc5bc677395b0f',
+        client_secret: '2bc8e168617cab76fe9ddbbc9d5daaa5df4c8f24',
+      },
+    })
+    gitment.render('gitments')
+</script>
     
 
 
@@ -504,7 +509,7 @@
             <div class="visit">
                 
                     <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" >悟空到访数: 
+                        <span id="site-visit" >海贼到访数: 
                             <span id="busuanzi_value_site_uv"></span>
                         </span>
                     </span>
