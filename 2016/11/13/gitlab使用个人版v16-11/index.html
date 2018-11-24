@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
   <title>gitlab使用个人版v16.11 | Blog</title>
@@ -12,7 +12,8 @@
 <meta property="og:url" content="https://mashangzhao.github.io/2016/11/13/gitlab使用个人版v16-11/index.html">
 <meta property="og:site_name" content="Blog">
 <meta property="og:description" content="安装gitbash附上地址链接：git">
-<meta property="og:updated_time" content="2017-08-13T07:02:20.896Z">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-11-24T08:02:07.538Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="gitlab使用个人版v16.11">
 <meta name="twitter:description" content="安装gitbash附上地址链接：git">
@@ -34,7 +35,7 @@
   
   <!-- 加载特效 -->
     <script src="/js/pace.js"></script>
-    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet">
   <script>
       var yiliaConfig = {
           rootUrl: '/',
@@ -48,7 +49,7 @@
           open_in_new: false
       }
   </script>
-</head>
+</head></html>
 <body>
   <div id="container">
     <div class="left-col">
@@ -231,7 +232,7 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-gitlab使用个人版v16-11" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-gitlab使用个人版v16-11" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2016/11/13/gitlab使用个人版v16-11/" class="article-date">
@@ -241,7 +242,7 @@
   
   <div class="article-inner">
     
-      <input type="hidden" class="isFancy" />
+      <input type="hidden" class="isFancy">
     
     
       <header class="article-header">
@@ -269,36 +270,36 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="安装gitbash"><a href="#安装gitbash" class="headerlink" title="安装gitbash"></a>安装gitbash</h2><p><strong>附上地址链接</strong>：<a href="https://git-scm.com/downloads" target="_blank" rel="external">git</a></p>
+        <h2 id="安装gitbash"><a href="#安装gitbash" class="headerlink" title="安装gitbash"></a>安装gitbash</h2><p><strong>附上地址链接</strong>：<a href="https://git-scm.com/downloads" target="_blank" rel="noopener">git</a></p>
 <a id="more"></a>
 <h2 id="配置gitlab和github"><a href="#配置gitlab和github" class="headerlink" title="配置gitlab和github"></a>配置gitlab和github</h2><p><strong>同时</strong>使用github和gitlab，引发了此问题，所以需要再次清理旧的配置。从新开始：</p>
 <ul>
 <li><p>打开git bash，在你的用户目录，生成ssh钥匙对，并且<code>指定</code>文件名为id_rsa_gitlab，<code>合适</code>的时候回车</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">cd ~/</div><div class="line"></div><div class="line">ssh-keygen -t rsa -f ~/.ssh/id_rsa_gitlab -C &quot;你的邮箱&quot;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">cd ~/</span><br><span class="line"></span><br><span class="line">ssh-keygen -t rsa -f ~/.ssh/id_rsa_gitlab -C &quot;你的邮箱&quot;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>可以重复上面步骤，给github账户也生成钥匙对，注意文件名不要与上面的冲突，<code>复制ssh</code>到你的gitlab或者github账户</p>
 <p>此处是<code>公钥</code>，一定注意</p>
 </li>
 <li><p>添加私钥，不过<code>不太明白</code>这里</p>
 <p>大概是一个全局变量，省去了每次输入密钥。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">ssh-add ~/.ssh/id_rsa_gitlab</div><div class="line"></div><div class="line">ssh-add ~/.ssh/id_rsa</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">ssh-add ~/.ssh/id_rsa_gitlab</span><br><span class="line"></span><br><span class="line">ssh-add ~/.ssh/id_rsa</span><br></pre></td></tr></table></figure>
 <ul>
 <li>有时会出新问题：</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Could not open a connection to your authentication agent.</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Could not open a connection to your authentication agent.</span><br></pre></td></tr></table></figure>
 <p>此问题是需要ssh-agent 启动bash。如下操作即可。。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">ssh-agent bash --login -i</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">ssh-agent bash --login -i</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>新建一个config文件</p>
 </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">touch config</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">touch config</span><br></pre></td></tr></table></figure>
 <ul>
 <li><p>内容如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#gitlab</div><div class="line"></div><div class="line">Host gitlab.com</div><div class="line"></div><div class="line">    HostName gitlab.com</div><div class="line"></div><div class="line">    PreferredAuthentications publickey</div><div class="line"></div><div class="line">    IdentityFile ~/.ssh/id_rsa_gitlab</div><div class="line"></div><div class="line">#github</div><div class="line"></div><div class="line">Host github.com</div><div class="line"></div><div class="line">    HostName github.com</div><div class="line"></div><div class="line">    PreferredAuthentications publickey</div><div class="line"></div><div class="line">    IdentityFile ~/.ssh/id_rsa</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#gitlab</span><br><span class="line"></span><br><span class="line">Host gitlab.com</span><br><span class="line"></span><br><span class="line">    HostName gitlab.com</span><br><span class="line"></span><br><span class="line">    PreferredAuthentications publickey</span><br><span class="line"></span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_gitlab</span><br><span class="line"></span><br><span class="line">#github</span><br><span class="line"></span><br><span class="line">Host github.com</span><br><span class="line"></span><br><span class="line">    HostName github.com</span><br><span class="line"></span><br><span class="line">    PreferredAuthentications publickey</span><br><span class="line"></span><br><span class="line">    IdentityFile ~/.ssh/id_rsa</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>测试是否OK</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">ssh -T git@gitlab.com</div><div class="line"></div><div class="line">ssh -t git@gitlab.com</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">ssh -T git@gitlab.com</span><br><span class="line"></span><br><span class="line">ssh -t git@gitlab.com</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>提示之一：Welcome to GitLab, Shangzhao Ma!</p>
 </blockquote>
@@ -308,49 +309,49 @@
 <h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><ul>
 <li>先clone到本地，在初始化</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">git clone git@gitlab.com:shiwk/WechatAttendanceSystem.git</div><div class="line"></div><div class="line">git init</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">git clone git@gitlab.com:shiwk/WechatAttendanceSystem.git</span><br><span class="line"></span><br><span class="line">git init</span><br></pre></td></tr></table></figure>
 <ul>
 <li>新建个文件，写点内容试试</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">touch README.md</div><div class="line"></div><div class="line">vim README.md</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">touch README.md</span><br><span class="line"></span><br><span class="line">vim README.md</span><br></pre></td></tr></table></figure>
 <ul>
 <li>准备提交，写点commit</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">git add README.md</div><div class="line"></div><div class="line">git commit -m &quot;add README&quot;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">git add README.md</span><br><span class="line"></span><br><span class="line">git commit -m &quot;add README&quot;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>push到具体的分支，此处是<code>master</code></li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">git push -u origin master</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
 <ul>
 <li>查看本地分支</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">git branch</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">git branch</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p><code>* master</code></p>
 </blockquote>
 <ul>
 <li>查看远端所有分支</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">git branch -r</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">git branch -r</span><br></pre></td></tr></table></figure>
 <ul>
 <li>创建新分支</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">git checkout -b msz</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">git checkout -b msz</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>Switched to a new branch ‘msz’</p>
 </blockquote>
 <ul>
 <li>切换分支到 master</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">git checkout master</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">git checkout master</span><br></pre></td></tr></table></figure>
 <ul>
 <li>push到远端的分支 msz</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">git push -u origin msz</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">git push -u origin msz</span><br></pre></td></tr></table></figure>
 <ul>
 <li>查看所有分支，包括本地和远端</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">git branch -a</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">git branch -a</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p><code>* master</code> </p>
 </blockquote>
@@ -362,27 +363,27 @@ remotes/origin/msz
 </code></pre><ul>
 <li>删除本地分支 msz</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">git branch -d msz</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">git branch -d msz</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>Deleted branch msz (was 83e06c5).</p>
 </blockquote>
 <ul>
 <li>删除远端分支 msz</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">git branch -r -d origin/msz</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">git branch -r -d origin/msz</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>   Deleted remote-tracking branch origin/msz (was 83e06c5).</p>
 </blockquote>
 <ul>
 <li>非常十分肯定的删除，即用空代替 msz</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">git push origin :msz</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">git push origin :msz</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>To gitlab.com:mashangzhao/wow.git</p>
 </blockquote>
 <pre><code>`- [deleted]`         msz
-</code></pre><p><strong>参考1</strong> <a href="http://xuyuan923.github.io/2014/11/04/github-gitlab-ssh/" target="_blank" rel="external">github/gitlab同时管理多个ssh key</a></p>
-<p><strong>参考2</strong> <a href="http://www.ixirong.com/2015/07/29/how-to-use-github-gitlab-together/" target="_blank" rel="external">一台机器上Github/Gitlab多账户管理SSH Key切换解决push冲突</a></p>
+</code></pre><p><strong>参考1</strong> <a href="http://xuyuan923.github.io/2014/11/04/github-gitlab-ssh/" target="_blank" rel="noopener">github/gitlab同时管理多个ssh key</a></p>
+<p><strong>参考2</strong> <a href="http://www.ixirong.com/2015/07/29/how-to-use-github-gitlab-together/" target="_blank" rel="noopener">一台机器上Github/Gitlab多账户管理SSH Key切换解决push冲突</a></p>
 <p><strong>参考</strong> <code>还有一些没有列出</code></p>
 <blockquote>
 <p>待续…… ——by arther</p>
@@ -391,7 +392,7 @@ remotes/origin/msz
 <li>克隆某个分支</li>
 </ul>
 <p>git clone -b <branch name=""> <repo name=""></repo></branch></p>
-<p>git clone -b develop git@gitlab.com:mashangzhao/wow.git</p>
+<p>git clone -b develop <a href="mailto:git@gitlab.com" target="_blank" rel="noopener">git@gitlab.com</a>:mashangzhao/wow.git</p>
 <ul>
 <li><p>更新说明 2017#08#09</p>
 <p>加入了ssh-agent不能认证问题解决方案。</p>
@@ -409,7 +410,7 @@ remotes/origin/msz
         <p><span>本文标题:</span><a href="/2016/11/13/gitlab使用个人版v16-11/">gitlab使用个人版v16.11</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Shangzhao Ma 的个人博客">Shangzhao Ma</a></p>
         <p><span>发布时间:</span>2016年11月13日 - 20时53分</p>
-        <p><span>最后更新:</span>2017年08月13日 - 07时02分</p>
+        <p><span>最后更新:</span>2018年11月24日 - 08时02分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/11/13/gitlab使用个人版v16-11/" title="gitlab使用个人版v16.11">https://mashangzhao.github.io/2016/11/13/gitlab使用个人版v16-11/</a>
             <span class="copy-path" data-clipboard-text="原文: https://mashangzhao.github.io/2016/11/13/gitlab使用个人版v16-11/　　作者: Shangzhao Ma" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -417,7 +418,7 @@ remotes/origin/msz
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
-            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target="_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
         </p>
     </div>
 
@@ -449,7 +450,7 @@ remotes/origin/msz
     <strong class="toc-title">文章目录</strong>
     <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装gitbash"><span class="toc-number">1.</span> <span class="toc-text">安装gitbash</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置gitlab和github"><span class="toc-number">2.</span> <span class="toc-text">配置gitlab和github</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用"><span class="toc-number">3.</span> <span class="toc-text">使用</span></a></li></ol>
 </div>
-<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+<input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
 
 <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
 <script>
@@ -554,7 +555,7 @@ remotes/origin/msz
     <div class="outer">
         <div id="footer-info">
             <div class="footer-left">
-                &copy; 2017 Shangzhao Ma
+                &copy; 2018 Shangzhao Ma
             </div>
             <div class="footer-right">
                 <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
@@ -563,8 +564,8 @@ remotes/origin/msz
         
             <div class="visit">
                 
-                    <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" >海贼到访数: 
+                    <span id="busuanzi_container_site_pv" style="display:none">
+                        <span id="site-visit">海贼到访数: 
                             <span id="busuanzi_value_site_uv"></span>
                         </span>
                     </span>
@@ -573,7 +574,7 @@ remotes/origin/msz
                     <span>, </span>
                 
                 
-                    <span id="busuanzi_container_page_pv" style='display:none'>
+                    <span id="busuanzi_container_page_pv" style="display:none">
                         <span id="page-visit">本页阅读量: 
                             <span id="busuanzi_value_page_pv"></span>
                         </span>
