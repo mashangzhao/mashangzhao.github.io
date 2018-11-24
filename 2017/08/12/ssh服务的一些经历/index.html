@@ -13,16 +13,16 @@
 <meta property="og:site_name" content="Blog">
 <meta property="og:description" content="先了解下SSH？ SSH is a software package that enables secure system administration and file transfers over insecure networks. It is used in nearly every data center, in every larger enterprise.  我们常谈的是SSH协议">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://on2k2dqee.bkt.clouddn.com/permitrootlogin.png">
-<meta property="og:image" content="http://on2k2dqee.bkt.clouddn.com/ssh-key-rsa.png">
-<meta property="og:image" content="http://on2k2dqee.bkt.clouddn.com/sshd_config_1.png">
-<meta property="og:image" content="http://on2k2dqee.bkt.clouddn.com/permitemptypasswords.png">
-<meta property="og:image" content="http://on2k2dqee.bkt.clouddn.com/passwordauthentication.png">
-<meta property="og:updated_time" content="2018-11-24T08:02:07.538Z">
+<meta property="og:image" content="https://asjdfkl1239807yuiao-1253113844.cos.ap-beijing.myqcloud.com/ssh-blog/permitrootlogin.png">
+<meta property="og:image" content="https://asjdfkl1239807yuiao-1253113844.cos.ap-beijing.myqcloud.com/ssh-blog/ssh-key-rsa.png">
+<meta property="og:image" content="https://asjdfkl1239807yuiao-1253113844.cos.ap-beijing.myqcloud.com/ssh-blog/sshd_config_1.png">
+<meta property="og:image" content="https://asjdfkl1239807yuiao-1253113844.cos.ap-beijing.myqcloud.com/ssh-blog/permitemptypasswords.png">
+<meta property="og:image" content="https://asjdfkl1239807yuiao-1253113844.cos.ap-beijing.myqcloud.com/ssh-blog/passwordauthentication.png">
+<meta property="og:updated_time" content="2018-11-24T09:28:12.431Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ssh服务的一些经历">
 <meta name="twitter:description" content="先了解下SSH？ SSH is a software package that enables secure system administration and file transfers over insecure networks. It is used in nearly every data center, in every larger enterprise.  我们常谈的是SSH协议">
-<meta name="twitter:image" content="http://on2k2dqee.bkt.clouddn.com/permitrootlogin.png">
+<meta name="twitter:image" content="https://asjdfkl1239807yuiao-1253113844.cos.ap-beijing.myqcloud.com/ssh-blog/permitrootlogin.png">
   
     <link rel="alternative" href="/atom.xml" title="Blog" type="application/atom+xml">
   
@@ -298,12 +298,12 @@
 <li>禁止root登陆<br>禁止root登陆很简单，但是前提是你需要有其他的user。<br>话不多说，看过程。<strong>root权限操作的。</strong></li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">root@iZ28si2aplqZ:/home# adduser test		#加一个user，登录名是test</span><br><span class="line">Enter new UNIX password: 					#密码</span><br><span class="line">Retype new UNIX password: 					#重复密码</span><br><span class="line"></span><br><span class="line"># 忘记了几秒之前输入的密码了？</span><br><span class="line">root@iZ28si2aplqZ:/home# passwd test		#更改test用户的密码</span><br><span class="line">Enter new UNIX password: </span><br><span class="line">Retype new UNIX password: </span><br><span class="line"></span><br><span class="line"># 注意：先使用test账户登录</span><br><span class="line">如果登录成功，现在有了2个连接；</span><br><span class="line"></span><br><span class="line"># 修改sshd_config文件，不允许root用户登录，并保存</span><br><span class="line">找到 </span><br><span class="line">PermitRootLogin no						#修改为no，即不允许使用root账户登录</span><br><span class="line"></span><br><span class="line"># 重启ssh服务</span><br><span class="line">root@iZ28si2aplqZ:/home# /etc/init.d/ssh restart</span><br><span class="line">[ ok ] Restarting ssh (via systemctl): ssh.service.</span><br><span class="line"></span><br><span class="line"># 尝试root登陆，发现无法登陆，这时候完成了第一步：禁止root登陆。</span><br></pre></td></tr></table></figure>
-<p><img src="http://on2k2dqee.bkt.clouddn.com/permitrootlogin.png" alt="禁止root登陆"></p>
+<p><img src="https://asjdfkl1239807yuiao-1253113844.cos.ap-beijing.myqcloud.com/ssh-blog/permitrootlogin.png" alt="禁止root登陆"></p>
 <ul>
 <li>使用口令登陆<br>当然需要生成一对口令，公钥和私钥，然后公钥(.pub)需要放在远程一个合适的位置。<br>我也相信你有很多方案将公钥传输过去。<br>话不多说，看过程。</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">mashangzhao@iZ28si2aplqZ:~$ ssh-keygen -t rsa	#生成一对rsa口令</span><br><span class="line">Generating public/private rsa key pair.</span><br><span class="line">Enter file in which to save the key (/home/mashangzhao/.ssh/id_rsa): aliyun	#文件名</span><br><span class="line">Enter passphrase (empty for no passphrase): 	#口令短语</span><br><span class="line">Enter same passphrase again:</span><br><span class="line">Your identification has been saved in aliyun.</span><br><span class="line">Your public key has been saved in aliyun.pub.</span><br><span class="line"></span><br><span class="line"># 这时生成好了一对口令</span><br><span class="line"># 公钥(.pub)保存在服务器这边，私钥拿回来，放在本地。</span><br><span class="line"></span><br><span class="line"># 配置部分</span><br><span class="line">#1 用户家目录（一般这里）新建.ssh文件夹，/home/user/.ssh/，将aliyun.pub内容复制到authorized_keys中，</span><br><span class="line">mashangzhao@iZ28si2aplqZ:~$ cat aliyun.pub &gt;&gt; .ssh/authorized_keys</span><br><span class="line"></span><br><span class="line">#2 配置/etc/ssh/sshd_config文件（有彩色的截图）</span><br><span class="line"></span><br><span class="line">#3 修改权限</span><br><span class="line">mashangzhao@iZ28si2aplqZ:/home/mashangzhao# chmod 700 .ssh		#修改.ssh目录权限</span><br><span class="line">mashangzhao@iZ28si2aplqZ:/home/mashangzhao# chmod 400 .ssh/authorized_keys	#修改authorized_keys权限</span><br><span class="line"></span><br><span class="line">#4 重启ssh服务</span><br><span class="line">/etc/init.d/ssh restart</span><br><span class="line"></span><br><span class="line">#5 测试是否可以使用口令登陆？</span><br><span class="line">如果可以，可以进行下一步，禁止密码登陆。</span><br></pre></td></tr></table></figure>
-<p><img src="http://on2k2dqee.bkt.clouddn.com/ssh-key-rsa.png" alt="生成一个密钥"><br><img src="http://on2k2dqee.bkt.clouddn.com/sshd_config_1.png" alt="sshd_config"><br><img src="http://on2k2dqee.bkt.clouddn.com/permitemptypasswords.png" alt="不允许空的密码"><br><img src="http://on2k2dqee.bkt.clouddn.com/passwordauthentication.png" alt="密码认证先开启"></p>
+<p><img src="https://asjdfkl1239807yuiao-1253113844.cos.ap-beijing.myqcloud.com/ssh-blog/ssh-key-rsa.png" alt="生成一个密钥"><br><img src="https://asjdfkl1239807yuiao-1253113844.cos.ap-beijing.myqcloud.com/ssh-blog/sshd_config_1.png" alt="sshd_config"><br><img src="https://asjdfkl1239807yuiao-1253113844.cos.ap-beijing.myqcloud.com/ssh-blog/permitemptypasswords.png" alt="不允许空的密码"><br><img src="https://asjdfkl1239807yuiao-1253113844.cos.ap-beijing.myqcloud.com/ssh-blog/passwordauthentication.png" alt="密码认证先开启"></p>
 <ul>
 <li>禁止密码登录</li>
 </ul>
@@ -332,7 +332,7 @@
         <p><span>本文标题:</span><a href="/2017/08/12/ssh服务的一些经历/">ssh服务的一些经历</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Shangzhao Ma 的个人博客">Shangzhao Ma</a></p>
         <p><span>发布时间:</span>2017年08月12日 - 11时37分</p>
-        <p><span>最后更新:</span>2018年11月24日 - 08时02分</p>
+        <p><span>最后更新:</span>2018年11月24日 - 09时28分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/08/12/ssh服务的一些经历/" title="ssh服务的一些经历">https://mashangzhao.github.io/2017/08/12/ssh服务的一些经历/</a>
             <span class="copy-path" data-clipboard-text="原文: https://mashangzhao.github.io/2017/08/12/ssh服务的一些经历/　　作者: Shangzhao Ma" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
