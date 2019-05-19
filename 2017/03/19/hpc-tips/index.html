@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head><meta name="generator" content="Hexo 3.8.0"><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+<meta name="theme-color" content="#f8f5ec">
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="hpc-tips"><meta name="keywords" content="script, Blog"><link rel="alternate" href="/default" title="Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.0">
+<link rel="canonical" href="https://mashangzhao.github.io/2017/03/19/hpc-tips/">
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css"><link rel="stylesheet" type="text/css" href="/lib/nprogress/nprogress.min.css">
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0">
+
+<script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":true,"latex":false};
+</script>
+
+    <title>hpc-tips - Blog</title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/">
+        <li class="mobile-menu-item">首页
+          </li>
+      </a><a href="/archives/">
+        <li class="mobile-menu-item">时间线
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">分类
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">目录
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于
+          </li>
+      </a><a href="/about/friends/">
+        <li class="mobile-menu-item">友人
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Blog</a>
+</div>
+
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/">
+            首页
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            时间线
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/tags/">
+            分类
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            目录
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/about/">
+            关于
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/about/friends/">
+            友人
+            </a>
+        </li>
+      </ul></nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">hpc-tips
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2017-03-19
+        </span></div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#想要复制N份qbs脚本"><span class="toc-text">想要复制N份qbs脚本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#执行N份qbs脚本"><span class="toc-text">执行N份qbs脚本</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p>最近遇到了这么一件事···</p>
+<h2 id="想要复制N份qbs脚本"><a href="#想要复制N份qbs脚本" class="headerlink" title="想要复制N份qbs脚本"></a>想要复制N份qbs脚本</h2><p><code>N = 10</code></p>
+<pre><code>$ example for copy conten
+#!/bin/bash
+echo &quot;start&quot;
+for i in {1..10}
+do
+cat &gt; script.$i.pbs &lt;&lt;EOF
+#!/bin/bash
+#PBS -N test
+#PBS -l nodes=1:ppn=1
+#PBS -q AP100_queue
+#PBS -j oe
+cd  \$PBS_O_WORKDIR
+proc=\$(cat \$PBS_NODEFILE | wc -l)
+./test_work_1.o &gt;&gt; qwer.log
+EOF
+done
+echo &quot;end&quot;
+</code></pre><p>被复制的内容是<br><a id="more"></a></p>
+<pre><code>#!/bin/bash
+#PBS -N test
+#PBS -l nodes=1:ppn=1
+#PBS -q AP100_queue
+#PBS -j oe
+cd  \$PBS_O_WORKDIR
+proc=\$(cat \$PBS_NODEFILE | wc -l)
+./test_work_1.o &gt;&gt; qwer.log
+</code></pre><ul>
+<li>shell脚本的 <code>#!/bin/bash</code> 不可缺少</li>
+<li>待复制的里面有 <code>$</code>符号，一定注意，要将 <code>\</code> 加在其前。具体参见shell编程  <code>=_=</code></li>
+</ul>
+<h2 id="执行N份qbs脚本"><a href="#执行N份qbs脚本" class="headerlink" title="执行N份qbs脚本"></a>执行N份qbs脚本</h2><ul>
+<li><p>脚本名称为<code>script.1.pbs</code>等等</p>
+<pre><code>for i in {1..10}; do qsub script.$i.pbs ;done
+</code></pre></li>
+</ul>
+<p><em>图片参考<code>失败</code>，具体以实物为准</em></p>
+<p><strong>参考文档1</strong>  <a href="https://wikis.nyu.edu/display/NYUHPC/Tutorial+-+Submitting+a+job+using+qsub" target="_blank" rel="noopener">Tutorial - Submitting a job using qsub</a></p>
+<p><strong>待更</strong></p>
+
+      </div>
+      <div class="post-copyright">
+    <p class="copyright-item">
+      <span>原文作者: </span>
+      <a href="https://mashangzhao.github.io">Shangzhao Ma|马尚朝</a>
+    </p>
+    <p class="copyright-item">
+      <span>原文链接: </span>
+      <a href="https://mashangzhao.github.io/2017/03/19/hpc-tips/">https://mashangzhao.github.io/2017/03/19/hpc-tips/</a>
+    </p>
+    <p class="copyright-item">
+      <span>许可协议: </span><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+      <footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/script/">script</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/2017/06/12/postgres-export-and-import-md/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">postgres export and import.md</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    <a class="next" href="/2016/11/13/gitlab使用个人版v16-11/">
+        <span class="next-text nav-default">gitlab使用个人版v16.11</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    </article></div><div class="comments" id="comments"></div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:mashangzhao@gmail.com" class="iconfont icon-email" title="email"></a>
+        <a href="https://github.com/mashangzhao" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2016 - 2019<span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Shangzhao Ma|马尚朝</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/lib/pjax/jquery.pjax.min.js"></script>
+  <script type="text/javascript" src="/lib/nprogress/nprogress.min.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

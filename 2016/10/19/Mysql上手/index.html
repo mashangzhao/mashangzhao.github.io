@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head><meta name="generator" content="Hexo 3.8.0"><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+<meta name="theme-color" content="#f8f5ec">
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="Mysql上手"><meta name="keywords" content="Mysql, Blog"><link rel="alternate" href="/default" title="Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.0">
+<link rel="canonical" href="https://mashangzhao.github.io/2016/10/19/Mysql上手/">
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css"><link rel="stylesheet" type="text/css" href="/lib/nprogress/nprogress.min.css">
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0">
+
+<script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":true,"latex":false};
+</script>
+
+    <title>Mysql上手 - Blog</title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/">
+        <li class="mobile-menu-item">首页
+          </li>
+      </a><a href="/archives/">
+        <li class="mobile-menu-item">时间线
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">分类
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">目录
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于
+          </li>
+      </a><a href="/about/friends/">
+        <li class="mobile-menu-item">友人
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Blog</a>
+</div>
+
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/">
+            首页
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            时间线
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/tags/">
+            分类
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            目录
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/about/">
+            关于
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/about/friends/">
+            友人
+            </a>
+        </li>
+      </ul></nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">Mysql上手
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2016-10-19
+        </span></div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Mysql上手操作"><span class="toc-text">Mysql上手操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用Mysql-打开-相应的服务。启动……"><span class="toc-text">使用Mysql,打开 相应的服务。启动……</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#编码"><span class="toc-text">编码</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><h1 id="Mysql上手操作"><a href="#Mysql上手操作" class="headerlink" title="Mysql上手操作"></a>Mysql上手操作</h1><hr>
+<h3 id="使用Mysql-打开-相应的服务。启动……"><a href="#使用Mysql-打开-相应的服务。启动……" class="headerlink" title="使用Mysql,打开 相应的服务。启动……"></a>使用Mysql,打开 <code>相应的服务</code>。启动……</h3><ol>
+<li><p>打开命令窗口。此处有多种方法，我是在开始菜单（Mysql5.6 Command Line Client）打开的（简单）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -h localhost -u root -p   #开始菜单不需要此命令</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>登陆,使用安装时设置的密码。</p>
+<a id="more"></a>
+<p>输入你的密码。</p>
+</li>
+</ol>
+<hr>
+<ol start="3">
+<li><p>登陆成功就可以愉快地玩耍勒。</p>
+<ul>
+<li><p>先全局观望,发现有五六七八个左右的数据库。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show databases;  #看看本地有哪些数据库</span><br><span class="line">+--------------------+</span><br><span class="line">| Database           |</span><br><span class="line">+--------------------+</span><br><span class="line">| information_schema |</span><br><span class="line">| mysql              |</span><br><span class="line">| performance_schema |</span><br><span class="line">| sakila             |</span><br><span class="line">| test               |</span><br><span class="line">| testdb             |</span><br><span class="line">| world              |</span><br><span class="line">+--------------------+</span><br><span class="line">7 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>厉害了我的world，我想看看哪个里面都有什么？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; use world;       #使用world库</span><br><span class="line">Database changed</span><br><span class="line">mysql&gt; show tables;     #看看库里有什么东东（表）</span><br><span class="line">+-----------------+</span><br><span class="line">| Tables_in_world |</span><br><span class="line">+-----------------+</span><br><span class="line">| city            |</span><br><span class="line">| country         |</span><br><span class="line">| countrylanguage |</span><br><span class="line">+-----------------+</span><br><span class="line">3 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>先猫一眼city的样子。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; desc city;   #看看city模式（database schema）,包括五个属性（attribute）       </span><br><span class="line">+-------------+----------+------+-----+---------+----------------+</span><br><span class="line">| Field       | Type     | Null | Key | Default | Extra          |</span><br><span class="line">+-------------+----------+------+-----+---------+----------------+</span><br><span class="line">| ID          | int(11)  | NO   | PRI | NULL    | auto_increment |</span><br><span class="line">| Name        | char(35) | NO   |     |         |                |</span><br><span class="line">| CountryCode | char(3)  | NO   |     |         |                |</span><br><span class="line">| District    | char(20) | NO   |     |         |                |</span><br><span class="line">| Population  | int(11)  | NO   |     | 0       |                |</span><br><span class="line">+-------------+----------+------+-----+---------+----------------+</span><br><span class="line">5 rows in set (0.09 sec)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>再看看city表（table）里面有数据吗？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">| 4075 | Khan Yunis                           | PSE         | Khan Yun</span><br><span class="line">is                   |     123175 |</span><br><span class="line">| 4076 | Hebron                               | PSE         | Hebron</span><br><span class="line">                     |     119401 |</span><br><span class="line">| 4077 | Jabaliya                             | PSE         | North Ga</span><br><span class="line">za                   |     113901 |</span><br><span class="line">| 4078 | Nablus                               | PSE         | Nablus</span><br><span class="line">                     |     100231 |</span><br><span class="line">| 4079 | Rafah                                | PSE         | Rafah</span><br><span class="line">                     |      92020 |</span><br><span class="line">+------+--------------------------------------+-------------+---------</span><br><span class="line">---------------------+------------+</span><br><span class="line">4079 rows in set (0.06 sec)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li><code>发现有4079条记录（数据）</code>，太多了，缓冲区都不够用，我的命令都没了。如何是好？<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select * from city limit 0,5;    #只要前5行，从第0行开始，列出总计5行OK</span><br><span class="line">+----+----------------+-------------+---------------+------------+</span><br><span class="line">| ID | Name           | CountryCode | District      | Population |</span><br><span class="line">+----+----------------+-------------+---------------+------------+</span><br><span class="line">|  1 | Kabul          | AFG         | Kabol         |    1780000 |</span><br><span class="line">|  2 | Qandahar       | AFG         | Qandahar      |     237500 |</span><br><span class="line">|  3 | Herat          | AFG         | Herat         |     186800 |</span><br><span class="line">|  4 | Mazar-e-Sharif | AFG         | Balkh         |     127800 |</span><br><span class="line">|  5 | Amsterdam      | NLD         | Noord-Holland |     731200 |</span><br><span class="line">+----+----------------+-------------+---------------+------------+</span><br><span class="line">5 rows in set (0.00 sec)</span><br><span class="line">mysql&gt; select * from city limit 4074,5;     #从4074开始，跟数组类似。只要5行</span><br><span class="line">+------+------------+-------------+------------+------------+</span><br><span class="line">| ID   | Name       | CountryCode | District   | Population |</span><br><span class="line">+------+------------+-------------+------------+------------+</span><br><span class="line">| 4075 | Khan Yunis | PSE         | Khan Yunis |     123175 |</span><br><span class="line">| 4076 | Hebron     | PSE         | Hebron     |     119401 |</span><br><span class="line">| 4077 | Jabaliya   | PSE         | North Gaza |     113901 |</span><br><span class="line">| 4078 | Nablus     | PSE         | Nablus     |     100231 |</span><br><span class="line">| 4079 | Rafah      | PSE         | Rafah      |      92020 |</span><br><span class="line">+------+------------+-------------+------------+------------+</span><br><span class="line">5 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>一窥究竟，发现属性有ID,Name，CountryCode，District，Population。</p>
+</blockquote>
+<hr>
+<ol start="4">
+<li><p>具体的操作：</p>
+<ul>
+<li>对于库的操作：<blockquote>
+<p>show databases;    #列出当前有哪些库【注意databases，还有分号】<br>use xxx;        #使用xx数据库，xxx表示数据库名<br>select database();      #当前使用的是哪个库【注意database后面没有s】<br>create database xxx;   #创建xxx数据库<br>drop database xxx;     #删除xxx数据库</p>
+</blockquote>
+</li>
+<li><p>对于表的操作：</p>
+<blockquote>
+<p>show tables;       #列出xxx库里面的表<br>create table stu(name char(20),id int,age int,address char(30),phone_num char(11),primary key (id));<br> );       #创建一个stu表，并且id是主键</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; create table stu (</span><br><span class="line">     -&gt; name char(20),</span><br><span class="line">     -&gt; id int,</span><br><span class="line">      -&gt; age int,</span><br><span class="line">     -&gt; address char(30),</span><br><span class="line">     -&gt; phone_num char(11),</span><br><span class="line">     -&gt; primary key (id)</span><br><span class="line">     -&gt; );</span><br><span class="line"> Query OK, 0 rows affected (0.36 sec)</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>desc stu;  #stu表的详细属性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; desc stu;</span><br><span class="line">+-----------+----------+------+-----+---------+-------+</span><br><span class="line">| Field     | Type     | Null | Key | Default | Extra |</span><br><span class="line">+-----------+----------+------+-----+---------+-------+</span><br><span class="line">| name      | char(20) | YES  |     | NULL    |       |</span><br><span class="line">| id        | int(11)  | NO   | PRI | 0       |       |</span><br><span class="line">| age       | int(11)  | YES  |     | NULL    |       |</span><br><span class="line">| address   | char(30) | YES  |     | NULL    |       |</span><br><span class="line">| phone_num | char(11) | YES  |     | NULL    |       |</span><br><span class="line">+-----------+----------+------+-----+---------+-------+</span><br><span class="line">5 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>insert into stu values (‘tju’,001,20,’8A’,10086); #注意values，如果只有一条，-s 可选，但是多条数据 -s 必选</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; insert into stu values (</span><br><span class="line">    -&gt; &apos;tju&apos;,</span><br><span class="line">    -&gt; 001,</span><br><span class="line">    -&gt; 20,</span><br><span class="line">    -&gt; &apos;8A&apos;,</span><br><span class="line">    -&gt; 10086</span><br><span class="line">    -&gt; );</span><br><span class="line">Query OK, 1 row affected (0.08 sec)</span><br><span class="line">mysql&gt; insert into stu values (</span><br><span class="line">    -&gt; &apos;nku&apos;,</span><br><span class="line">    -&gt; 002,</span><br><span class="line">    -&gt; 20,</span><br><span class="line">    -&gt; &apos;8b&apos;,</span><br><span class="line">    -&gt; 10010),</span><br><span class="line">    -&gt; (</span><br><span class="line">    -&gt; &apos;pku&apos;,</span><br><span class="line">    -&gt; 003,</span><br><span class="line">    -&gt; 21,</span><br><span class="line">    -&gt; &apos;bj&apos;,</span><br><span class="line">    -&gt; &apos;110&apos;</span><br><span class="line">    -&gt; ),</span><br><span class="line">    -&gt; (&apos;tju&apos;,</span><br><span class="line">    -&gt; &apos;004&apos;,</span><br><span class="line">    -&gt; 22,</span><br><span class="line">    -&gt; &apos;sh&apos;,</span><br><span class="line">    -&gt; &apos;95188&apos;);</span><br><span class="line">Query OK, 3 rows affected (0.08 sec)</span><br><span class="line">Records: 3  Duplicates: 0  Warnings: 0</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>列出全部的记录（元组）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select * from stu;</span><br><span class="line">+------+----+------+---------+-----------+</span><br><span class="line">| name | id | age  | address | phone_num |</span><br><span class="line">+------+----+------+---------+-----------+</span><br><span class="line">| tju  |  1 |   20 | 8A      | 10086     |</span><br><span class="line">| nku  |  2 |   20 | 8b      | 10010     |</span><br><span class="line">| pku  |  3 |   21 | bj      | 110       |</span><br><span class="line">| tju  |  4 |   22 | sh      | 95188     |</span><br><span class="line">+------+----+------+---------+-----------+</span><br><span class="line">4 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>有选择的列出几个，条件是 age &lt; 21<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select name from stu where age &lt; 21;</span><br><span class="line">+------+</span><br><span class="line">| name |</span><br><span class="line">+------+</span><br><span class="line">| tju  |</span><br><span class="line">| nku  |</span><br><span class="line">+------+</span><br><span class="line">2 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>alter table stu add passwd varchar(12);   #增加属性passwd<br>alter table stu add column passwd varchar(12);    #与上面效果相同<br>delete from school where id =4;       #删除一条数据<br>删除passwd属性，同理会删除这一列的所有数据：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; alter table stu drop column passwd;</span><br><span class="line">Query OK, 0 rows affected (0.62 sec)</span><br><span class="line">Records: 0  Duplicates: 0  Warnings: 0</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>rename table stu to school;   #修改表的名字<br>alter table stu change phone_num num varchar(11);     #修改属性名（列名）<br>update school set age = 23 where name =’nku’;     #更新age为23</p>
+</blockquote>
+<hr>
+<ol start="5">
+<li>退出<blockquote>
+<p>exit<br>quit  #两个命令都可以</p>
+</blockquote>
+</li>
+</ol>
+<hr>
+<h2 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h2><p>可以使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show variables like &apos;character%&apos;; --查看编码方式</span><br><span class="line">+--------------------------+----------------------------+</span><br><span class="line">| Variable_name            | Value                      |</span><br><span class="line">+--------------------------+----------------------------+</span><br><span class="line">| character_set_client     | gbk                        |</span><br><span class="line">| character_set_connection | utf8                       |</span><br><span class="line">| character_set_database   | latin1                     |</span><br><span class="line">| character_set_filesystem | binary                     |</span><br><span class="line">| character_set_results    | utf8                       |</span><br><span class="line">| character_set_server     | utf8                       |</span><br><span class="line">| character_set_system     | utf8                       |</span><br><span class="line">| character_sets_dir       | /usr/share/mysql/charsets/ |</span><br><span class="line">+--------------------------+----------------------------+</span><br><span class="line">8 rows in set (0.01 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; set character_set_client=utf8;	--更改编码</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; show variables like &apos;character_set_client&apos;;	--查看client编码</span><br><span class="line">+----------------------+-------+</span><br><span class="line">| Variable_name        | Value |</span><br><span class="line">+----------------------+-------+</span><br><span class="line">| character_set_client | utf8  |</span><br><span class="line">+----------------------+-------+</span><br><span class="line">1 row in set (0.01 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt;</span><br></pre></td></tr></table></figure></p>
+<p><code>欢迎讨论，未完待续</code></p>
+
+      </div>
+      <div class="post-copyright">
+    <p class="copyright-item">
+      <span>原文作者: </span>
+      <a href="https://mashangzhao.github.io">Shangzhao Ma|马尚朝</a>
+    </p>
+    <p class="copyright-item">
+      <span>原文链接: </span>
+      <a href="https://mashangzhao.github.io/2016/10/19/Mysql上手/">https://mashangzhao.github.io/2016/10/19/Mysql上手/</a>
+    </p>
+    <p class="copyright-item">
+      <span>许可协议: </span><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+      <footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/Mysql/">Mysql</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/2016/11/13/gitlab使用个人版v16-11/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">gitlab使用个人版v16.11</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    <a class="next" href="/2016/08/19/Sublime/">
+        <span class="next-text nav-default">Sublime Text3插件</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    </article></div><div class="comments" id="comments"></div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:mashangzhao@gmail.com" class="iconfont icon-email" title="email"></a>
+        <a href="https://github.com/mashangzhao" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2016 - 2019<span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Shangzhao Ma|马尚朝</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/lib/pjax/jquery.pjax.min.js"></script>
+  <script type="text/javascript" src="/lib/nprogress/nprogress.min.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>
