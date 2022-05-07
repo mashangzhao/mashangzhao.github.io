@@ -158,7 +158,7 @@
 </li>
 </ul>
 <p>参考：<a href="https://blog.csdn.net/weixin_39383896/article/details/99690266" target="_blank" rel="noopener">https://blog.csdn.net/weixin_39383896/article/details/99690266</a></p>
-<ol start="3">
+<ol>
 <li>常见的正则<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 去掉行首的序号编号</span><br><span class="line">big_8 = re.compile(&apos;[①②③④⑤⑥⑦⑧⑨⑩]&apos;)</span><br><span class="line"># 行中</span><br><span class="line">big_10 = re.compile(&apos;[•·～#［\uf0b7\uf0d8＝＊*]&apos;) # 替换特殊字符 上将</span><br><span class="line">big_11 = re.compile(&apos;([：；。:;]+)([a-zA-Z\d]+\))&apos;) # 替换 2) </span><br><span class="line">big_12 = re.compile(&apos;\s*[（\(][a-zA-Z/\d\s]&#123;2,&#125;[）\)]\s*&apos;) # 删除如（RSI2 aaa）</span><br><span class="line">big_url = re.compile(&apos;http[s]?\s*://(?:[a-zA-Z]|[0-9]|[\s$-_@.&amp;+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+&apos;) # 删除网址</span><br><span class="line">big_mail = re.compile(&apos;[a-zA-Z0-9\.\-]+@[\w\.]+\s*\w+&apos;) # 邮箱地址</span><br><span class="line">big_tail = re.compile(&apos;\d+$&apos;) # 删除行尾的数字，例如页码</span><br><span class="line">big_phone= re.compile(&apos;\d&#123;3,&#125;(-\d&#123;3,&#125;)+&apos;) # 删除电话号码，可能会附带删除地址编号</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
@@ -190,7 +190,8 @@
         <i class="iconfont icon-right"></i>
       </a>
     </nav></footer>
-    </article></div><div class="comments" id="comments"></div></div>
+    </article></div><div class="comments" id="comments"><div id="cusdis_thread" data-host="https://cusdis.com" data-app-id="f2d4782f-5840-4227-8f7d-c42045369d91" data-page-id="2022/05/04/re/" data-page-url="https://mashangzhao.github.io/2022/05/04/re/" data-page-title="re"></div>
+      </div></div>
       </main>
 
       <footer id="footer" class="footer"><div class="social-links"><a href="mailto:mashangzhao@gmail.com" class="iconfont icon-email" title="email"></a>
@@ -217,7 +218,7 @@
       <div class="back-to-top" id="back-to-top">
         <i class="iconfont icon-up"></i>
       </div>
-    </div><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+    </div><script async src="https://cusdis.com/js/cusdis.es.js"></script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
   <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
   <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
   <script type="text/javascript" src="/lib/pjax/jquery.pjax.min.js"></script>
